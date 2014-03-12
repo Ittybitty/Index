@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+
+
+public class DocumentIndex extends ArrayList<IndexEntry> {
+	private static final long serialVersionUID = 1L;
+
+	private int counter = -1;
+	public DocumentIndex(){
+		super();
+	}
+	
+	public DocumentIndex(int num){
+		super(num);
+	}
+	
+	
+	public void addWord(String word, int num){
+		
+		if(!this.contains(word.toUpperCase())){
+			this.add(new IndexEntry(word.toUpperCase()));
+			counter++;
+			this.get(counter).add(num);
+			
+		}
+		
+		//SET SOME VALUES IN A SPECIFIC WORD's INDEXENTRY LIKE A MAN (in theory)
+		else{
+			this.get(counter).add(num);
+			
+		}
+	}	
+	
+	public void addAllWords(String str, int num){
+		for(String i : str.split("\\W+")){
+			if(!i.isEmpty()){
+				addWord(i, num);
+				
+			}
+		}
+	}
+	
+	
+	
+	
+	
+}
